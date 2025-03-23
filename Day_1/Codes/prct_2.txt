@@ -1,0 +1,33 @@
+::Turns off command echoing
+@echo off
+
+::Displays the current logged-in username
+echo username:%username%
+
+::displays the Windows version
+ver
+
+::Changes the command prompt color to bright white text on a black background
+color F
+
+::Displays or sets the current system time.
+time
+
+::Displays or sets the current system date.
+date
+
+::Displays the current date using the system variable `%DATE%`
+echo Current date: %DATE%
+
+::Displays the current time using the system variable `%TIME%`
+echo Current time: %TIME%
+
+::Lists files and directories in the current folder in as less detailed output
+dir/w
+
+::Display the help documentation for the dir command
+dir/?
+
+::Keeps the command prompt open until the user presses a key
+pause
+
