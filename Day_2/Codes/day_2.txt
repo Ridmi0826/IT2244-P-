@@ -1,0 +1,55 @@
+::Turns off command echoing
+@echo off
+
+::Displays the title
+echo Birthday calculater
+
+::Prompts the user to enter their birth year and stores it in "birth_year"
+set /p birth_year=Enter your Birth Year:
+
+::Displays the current system date
+echo %date%
+
+::Extracts the current year from the system date
+set current_year=%date:~10,4%
+
+::Displays the extracted current year
+echo current year is %current_year%
+
+:: Extracts the current day from the system date
+set current_date=%date:~7,2%
+
+::Displays the extracted current date
+echo current date is %current_date%
+
+::Extracts the current month from the system date
+set current_month=%date:~4,2%
+
+::Displays the extracted current month
+echo current month is %current_month%
+
+::::Calculates the user's age by subtracting the birth year from the current year
+set /a age=%current_year%-%birth_year%
+echo you are %age% years old.
+
+::Prompts the user to enter their birth day
+set /p birth_day=Enter your Birth Date:
+
+::Calculates the difference between the current day and the birth day.
+set /a date_differ=%current_date%-%birth_day%
+
+::Displays the difference in days
+echo Date difference is %date_differ%
+
+::Prompts the user to enter their birth month
+set /p birth_month=Enter your Birth Month:
+
+::Calculates the difference between the current month and the birth month
+set /a month_differ=%current_month%-%birth_month%
+
+::Displays the difference in months
+echo Month difference is %month_differ%
+
+
+::Pauses the script
+pause

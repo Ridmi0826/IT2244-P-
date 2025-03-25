@@ -1,0 +1,140 @@
+//Creates an empty file named new.txt
+[root@Ridmi ~]# touch new.txt
+
+//Creates an empty file named test.csv
+[root@Ridmi ~]# touch test.csv
+
+//Creates an empty file named test1.csv
+[root@Ridmi ~]# touch test1.csv
+
+//Opens new.txt in the vi editor for editing
+[root@Ridmi ~]# vi new.txt
+
+// Displays the content of new.txt.
+[root@Ridmi ~]# more new.txt
+jane,23,it
+anne,22,maths
+john,24,bio
+rose,21,it
+
+//Lists all files in the current directory
+[root@Ridmi ~]# ls
+abc.tsv  new.txt  test.csv  test1.csv
+
+//Lists files in long format, sorted by modification time
+[root@Ridmi ~]# ls -ltr
+total 8
+-rw-r--r-- 1 root root 81 Mar 22 16:48 abc.tsv
+-rw-r--r-- 1 root root  0 Mar 22 18:22 test.csv
+-rw-r--r-- 1 root root  0 Mar 22 18:22 test1.csv
+-rw-r--r-- 1 root root 48 Mar 22 18:25 new.txt
+
+//Find all the .txt in the location
+find *.txt
+[root@Ridmi ~]# find *.txt
+new.txt
+
+//Sets read-only permissions for everyone on new.txt
+[root@Ridmi ~]# chmod 444 new.txt
+[root@Ridmi ~]# ls -ltr
+total 8
+-rw-r--r-- 1 root root 81 Mar 22 16:48 abc.tsv
+-rw-r--r-- 1 root root  0 Mar 22 18:22 test.csv
+-rw-r--r-- 1 root root  0 Mar 22 18:22 test1.csv
+-r--r--r-- 1 root root 48 Mar 22 18:25 new.txt
+
+// Grants full permissions to the owner and read access to others.
+[root@Ridmi ~]# chmod 744 new.txt
+[root@Ridmi ~]# ls -ltr
+total 8
+-rw-r--r-- 1 root root 81 Mar 22 16:48 abc.tsv
+-rw-r--r-- 1 root root  0 Mar 22 18:22 test.csv
+-rw-r--r-- 1 root root  0 Mar 22 18:22 test1.csv
+-rwxr--r-- 1 root root 48 Mar 22 18:25 new.txt
+
+[root@Ridmi ~]# ls
+abc.tsv  new.txt  test.csv  test1.csv
+
+//Counts the number of lines in new.txt
+[root@Ridmi ~]# wc -l new.txt
+4 new.txt
+
+//Opens test.csv for editing
+[root@Ridmi ~]# vi test.csv
+
+// Allows scrolling up and down
+less new.txt
+
+//Extracts the first and third columns from test.csv
+[root@Ridmi ~]# cut -d, -f1,3 test.csv
+john
+jane
+rose
+anne
+
+//Extracts the first and second columns from test.csv
+[root@Ridmi ~]# cut -d, -f1,2 test.csv
+john,america
+jane,canada
+rose,china
+anne,cuba
+
+//Extracts only the second column from test.csv
+[root@Ridmi ~]# cut -d, -f2 test.csv
+america
+canada
+china
+cuba
+
+//Displays the first two lines of test.csv
+[root@Ridmi ~]# head -2 test.csv
+john,america
+jane,canada
+
+//Displays the last three lines of test.csv
+[root@Ridmi ~]# tail -3 test.csv
+jane,canada
+rose,china
+anne,cuba
+
+//Saves the first and second columns from test.csv into test3.csv
+[root@Ridmi ~]# cut -d, -f1,2 test.csv > test3.csv
+[root@Ridmi ~]# ls
+abc.tsv  new.txt  test.csv  test1.csv  test3.csv
+
+//Counts the number of lines in test3.csv
+[root@Ridmi ~]# wc -l test3.csv
+4 test3.csv
+
+// Extracts the first 3 rows from test.csv and appends (>>) them to rows_test1.csv
+[root@Ridmi ~]# head -3 test.csv >> rows_test1.csv
+[root@Ridmi ~]# ls
+abc.tsv  new.txt  rows_test1.csv  test.csv  test1.csv  test3.csv
+[root@Ridmi ~]# more rows_test1.csv
+john,america
+jane,canada
+rose,china
+
+//Prints the first column from test.csv
+[root@Ridmi ~]# awk -F, '{print$1}' test.csv
+john
+jane
+rose
+anne
+
+//Prints the third column from test.csv 
+//there’s no third column, so output is blank
+[root@Ridmi ~]# awk -F, '{print$3}' test.csv
+
+
+
+
+[root@Ridmi ~]# ls
+abc.tsv  new.txt  test.csv  test1.csv  test3.csv
+
+//Replaces "jane" with "jenny" in new.txt
+[root@Ridmi ~]# sed 's/jane/jenny/g' new.txt
+jenny,23,it
+anne,22,maths
+john,24,bio
+rose,21,it
