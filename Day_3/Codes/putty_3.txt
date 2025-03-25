@@ -1,0 +1,202 @@
+//Creates an empty file named abc.tsv
+touch abc.tsv
+
+//Opens the file abc.tsv in the vi editor 
+[root@Ridmi ~]# vi abc.tsv
+
+//Displays the contents of abc.tsv one page at a time
+[root@Ridmi ~]# more abc.tsv
+qq      23      45
+ww      45      65
+ee      87      98
+rr      63      17
+bb      54      72
+yy      39      82
+uu      50      28
+ii      43      94
+hh      39      49
+gg		45		87
+//Lists all files and directories in the current directory, including hidden files
+[root@Ridmi ~]# ls -a
+.   .bash_history  .bash_profile  .cshrc   abc.tsv
+..  .bash_logout   .bashrc        .tcshrc
+
+//Extract the first column using a tab
+[root@Ridmi ~]# cut -d$'\t' -f1 abc.tsv
+qq
+ww
+ee
+rr
+bb
+yy
+uu
+ii
+hh
+gg
+
+//Extracts the third column using a space
+[root@Ridmi ~]# cut -d " " -f3 abc.tsv
+qq      23      45
+ww      45      65
+ee      87      98
+rr      63      17
+bb      54      72
+yy      39      82
+uu      50      28
+ii      43      94
+hh      39      49
+
+//Displays the first two lines of abc.tsv
+[root@Ridmi ~]# head -n2 abc.tsv
+qq      23      45
+ww      45      65
+
+//Displays the last two lines of abc.tsv
+[root@Ridmi ~]# tail -n2 abc.tsv
+hh      39      49
+gg      45      87
+
+//Edit the abc.tsv file and remove tabs and add spaces between values
+[root@Ridmi ~]# vi abc.tsv
+
+//Extracts the tab seperated first column
+[root@Ridmi ~]# cut -d\t -f1 abc.tsv
+qq 23 45
+ww 45 65
+ee 87 98
+rr 63 17
+bb 54 72
+yy 39 82
+uu 50 28
+ii 43 94
+hh 39 49
+gg 45 87 
+
+//Extracts and prints the first column using a space as a delimiter
+[root@Ridmi ~]# cut -d ' ' -f1 abc.tsv
+qq
+ww
+ee
+rr
+bb
+yy
+uu
+ii
+hh
+gg
+
+//Extracts and prints the second column using a space as a delimiter
+[root@Ridmi ~]# cut -d ' ' -f2 abc.tsv
+23
+45
+87
+63
+54
+39
+50
+43
+39
+45
+
+//Displays the first 10 lines of abc.tsv
+[root@Ridmi ~]# head abc.tsv
+qq 23 45
+ww 45 65
+ee 87 98
+rr 63 17
+bb 54 72
+yy 39 82
+uu 50 28
+ii 43 94
+hh 39 49
+gg 45 87
+
+//Displays the first 8 lines of abc.tsv
+[root@Ridmi ~]# head -8 abc.tsv
+qq 23 45
+ww 45 65
+ee 87 98
+rr 63 17
+bb 54 72
+yy 39 82
+uu 50 28
+ii 43 94
+
+//Displays the last 8 lines of abc.tsv
+[root@Ridmi ~]# tail -8 abc.tsv
+ee 87 98
+rr 63 17
+bb 54 72
+yy 39 82
+uu 50 28
+ii 43 94
+hh 39 49
+gg 45 87
+
+//Displays the first line of abc.tsv
+[root@Ridmi ~]# head -1 abc.tsv
+qq 23 45
+
+//Displays the last line of abc.tsv
+[root@Ridmi ~]# tail -1 abc.tsv
+gg 45 87
+
+//Displays the first 100 lines of abc.tsv
+//abc.tsv has only 9 lines, it will print all lines
+[root@Ridmi ~]# head -100 abc.tsv
+qq 23 45
+ww 45 65
+ee 87 98
+rr 63 17
+bb 54 72
+yy 39 82
+uu 50 28
+ii 43 94
+hh 39 49
+gg 45 87
+
+//Extracts the first 8 lines, then prints only the last line from that result
+[root@Ridmi ~]# head -n8 abc.tsv | tail -n1
+ii 43 94
+
+//Prints each line of abc.tsv using awk
+[root@Ridmi ~]# awk '{print}' abc.tsv
+qq 23 45
+ww 45 65
+ee 87 98
+rr 63 17
+bb 54 72
+yy 39 82
+uu 50 28
+ii 43 94
+hh 39 49
+gg 45 87
+
+//Prints the number of columns in the first line of abc.tsv
+[root@Ridmi ~]# awk '{print NF; exit}' abc.tsv
+3
+
+//Uses tab as a delimiter and prints the number of columns in the first line and if the file is space-separated it will return 1.
+[root@Ridmi ~]# awk -F'\t' '{print NF; exit}' abc.tsv
+1
+
+//Extracts and prints the third column from each line
+[root@Ridmi ~]# awk '{print $3 }' abc.tsv
+45
+65
+98
+17
+72
+82
+28
+94
+49
+87
+
+//Counts and prints the number of lines in abc.tsv
+[root@Ridmi ~]# wc -l abc.tsv
+10 abc.tsv
+
+//Extracts the first 10 lines and searches for lines containing "rr" and display it
+[root@Ridmi ~]# head -n10 abc.tsv | grep 'rr'
+rr 63 17
