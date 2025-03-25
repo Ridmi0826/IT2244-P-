@@ -1,0 +1,104 @@
+//Displays the calendar for the current month and year
+
+[root@Ridmi ~]# cal
+     March 2025
+Su Mo Tu We Th Fr Sa
+                   1
+ 2  3  4  5  6  7  8
+ 9 10 11 12 13 14 15
+16 17 18 19 20 21 22
+23 24 25 26 27 28 29
+30 31
+
+//Shows the current day of the month
+[root@Ridmi ~]# date +%d
+25
+
+//Displays the current month in numeric format
+[root@Ridmi ~]# date +%m
+03
+
+//Shows the last two digits of the current year
+[root@Ridmi ~]# date +%y
+25
+
+//Displays the date in MM/DD/YY format.
+[root@Ridmi ~]# date +%D
+03/25/25
+
+//Shows the full year
+[root@Ridmi ~]# date +%Y
+2025
+
+//Displays the full month name
+[root@Ridmi ~]# date +%B
+March
+
+//Show the short form of the month name
+[root@Ridmi ~]# date +%b
+Mar
+
+//Displays the full name of the current day
+[root@Ridmi ~]# date +%A
+Tuesday
+
+//Show the short form of the current day name
+[root@Ridmi ~]# date +%a
+Tue
+
+//Show the short form of the month name
+[root@Ridmi ~]# date +%h
+Mar
+
+//Opens the "example_1.sh" in the vi editor
+[root@Ridmi ~]# vi example_1.sh
+
+//Lists files in the current directory
+[root@Ridmi ~]# ls
+abc.tsv       new.txt         test.csv   test3.csv
+example_1.sh  rows_test1.csv  test1.csv
+
+//Give read, write, and execute permissions to all users for "example_1.sh".
+[root@Ridmi ~]# chmod 777 example_1.sh
+
+[root@Ridmi ~]# ls
+abc.tsv       new.txt         test.csv   test3.csv
+example_1.sh  rows_test1.csv  test1.csv
+
+//Runs the "example_1.sh"
+[root@Ridmi ~]# ./example_1.sh
+Who are you?
+Ridmi
+Enter number 1
+5
+Enter number 2
+3
+Enter number 3
+2
+Hi Ridmi
+Summation  10
+Average  3
+
+//Opens the "example_2.sh" in the vi editor
+[root@Ridmi ~]# vi example_2.sh
+
+[root@Ridmi ~]# ls
+abc.tsv       example_2.sh  rows_test1.csv  test1.csv
+example_1.sh  new.txt       test.csv        test3.csv
+
+[root@Ridmi ~]# chmod 777 example_2.sh
+
+[root@Ridmi ~]# ls
+abc.tsv       example_2.sh  rows_test1.csv  test1.csv
+example_1.sh  new.txt       test.csv        test3.csv
+
+//Runs the "example_2.sh"
+[root@Ridmi ~]# ./example_2.sh
+Enter num1
+10
+Enter num2
+5
+Summation  15
+Subtraction  5
+Multipication  50
+Division  2
