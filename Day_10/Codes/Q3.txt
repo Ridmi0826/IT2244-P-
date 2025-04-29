@@ -1,0 +1,31 @@
+// Prompt for input string
+echo "Enter a string to check if it's a palindrome: "
+read str
+
+// Initialize an empty string for reverse
+rev_str=""
+
+// Reverse the string using a for loop
+for (( i=${#str}-1; i>=0; i-- )); do
+    rev_str="${rev_str}${str:i:1}"
+done
+
+// Check if the original string is the same as the reversed string
+if [ "$str" == "$rev_str" ]; then
+    echo "The string '$str' is a palindrome."
+else
+    echo "The string '$str' is NOT a palindrome."
+fi 
+
+OUTPUT:-
+
+[root@Ridmi ~]# vi palindrome_2.sh
+[root@Ridmi ~]# chmod 777 palindrome_2.sh
+[root@Ridmi ~]# ./palindrome_2.sh
+Enter a string to check if it's a palindrome:
+AMMA
+The string 'AMMA' is a palindrome.
+[root@Ridmi ~]# ./palindrome_2.sh
+Enter a string to check if it's a palindrome:
+SELL
+The string 'SELL' is NOT a palindrome.

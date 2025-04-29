@@ -1,0 +1,56 @@
+// Read three numbers
+echo "Enter the first number: "
+read a
+echo "Enter the second number: "
+read b
+echo "Enter the third number: "
+read c
+
+// Save original values for LCM calculation
+x=$a
+y=$b
+
+// Find GCD of a and b
+while [ $b -ne 0 ]
+do
+    temp=$b
+    b=$((a % b))
+    a=$temp
+done
+gcd_ab=$a
+
+// Find LCM of x and y
+lcm_ab=$(( (x * y) / gcd_ab ))
+
+// Now, find GCD of original b (y) and c
+b=$y
+d=$c
+
+while [ $d -ne 0 ]
+do
+    temp=$d
+    d=$((b % d))
+    b=$temp
+done
+gcd_bc=$b
+
+// Print results
+
+echo "LCM of $x and $y is: $lcm_ab"
+echo "GCD of $y and $c is: $gcd_bc"
+
+
+output:-
+
+*****
+[root@Ridmi ~]# vi ica_01.sh
+[root@Ridmi ~]# chmod 777 ica_01.sh
+[root@Ridmi ~]# ./ica_01.sh
+Enter the first number:
+4
+Enter the second number:
+2
+Enter the third number:
+6
+LCM of 4 and 2 is: 4
+GCD of 2 and 6 is: 2
