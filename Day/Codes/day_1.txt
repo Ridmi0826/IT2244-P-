@@ -1,0 +1,9 @@
+@echo off  
+:: Disable command echoing
+
+echo Username: %username%
+:: Display the current logged-in user's username
+
+echo Windows version: 
+ver
+:: Display the current Windows version
