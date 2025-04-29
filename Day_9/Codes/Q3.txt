@@ -1,0 +1,45 @@
+ Method 1:-
+// Printing multiplication table of 2 using a for loop
+echo "Multiplication table:"
+num=2
+for((i=1; i<=12; i++))
+do
+  // Multiply current number with 2
+  mul=$(($i * $num))
+  // Print the result
+  echo "$i x $num = $mul"
+done
+
+Method 2:-
+// Loop from 1 to 15
+for ((i=1; i<=15; i++))
+do
+  // Loop for j from 2 to 2 (only once)
+  for ((j=2; j<=2; j++))
+  do
+    // Print multiplication result
+    echo -n "$i x $j = $(($i * $j))"
+  done
+  
+  // Move to next line after printing
+  echo ''
+done
+
+OUTPUT:-
+
+[root@Ridmi ~]# vi que3.sh
+[root@Ridmi ~]# chmod 777 que3.sh
+[root@Ridmi ~]# ./que3.sh
+Multiplication table:
+1 x 2 = 2
+2 x 2 = 4
+3 x 2 = 6
+4 x 2 = 8
+5 x 2 = 10
+6 x 2 = 12
+7 x 2 = 14
+8 x 2 = 16
+9 x 2 = 18
+10 x 2 = 20
+11 x 2 = 22
+12 x 2 = 24
