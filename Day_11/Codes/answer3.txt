@@ -1,0 +1,27 @@
+echo "Enter the first string: "
+read str1
+echo "Enter the second string: "
+read str2
+
+str1_len=${#str1}
+str2_len=${#str2}
+
+if [ str2_len > str1_len ];
+then
+echo $str2 " is larger than " $str1
+elif [ str2_len < str1_len ];
+then
+echo $str2 " is smaller than " $str1
+else
+echo $str1 " and " $str2 " are having equal length "
+fi
+
+ans:-
+[2021ict115@fedora ~]$ vi question3.sh
+[2021ict115@fedora ~]$ chmod 777 question3.sh
+[2021ict115@fedora ~]$ ./question3.sh
+Enter the first string:
+Apple
+Enter the second string:
+Banana
+Banana  is larger than  Apple
