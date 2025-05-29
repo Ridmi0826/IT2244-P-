@@ -1,0 +1,120 @@
+//01
+#include<stdio.h>
+#include<unistd.h>
+int main(){
+printf("\nHello World!");
+int f=fork();
+int p=getpid();
+printf("\nthe pid is %d",p);
+printf("\nfork number %d\n",f);
+return 0;
+}
+
+ans:-
+
+[ridmi@DESKTOP-JLHF89K ~]$ vi prg1.c
+[ridmi@DESKTOP-JLHF89K ~]$ gcc prg1.c -o prg1
+[ridmi@DESKTOP-JLHF89K ~]$ ./prg1
+
+Hello World!
+the pid is 131
+fork number 132
+Hello World!
+the pid is 132
+fork number 0
+
+//02
+#include<stdio.h>
+#include<unistd.h>
+int main(){
+fork();
+printf("\nHello World!\n");
+
+return 0;
+}
+
+ans:-
+[ridmi@DESKTOP-JLHF89K ~]$ vi fork.c
+[ridmi@DESKTOP-JLHF89K ~]$ gcc fork.c -o fork
+[ridmi@DESKTOP-JLHF89K ~]$ ./fork
+
+Hello World!
+
+Hello World!
+
+//03
+#include<stdio.h>
+#include<unistd.h>
+int main(){
+printf("\nHello World!\n");
+int f = fork();
+if(f==0){
+printf("\nI'm child process!\n");
+}
+else{
+printf("\nI'm parent process\n");
+}
+return 0;
+}
+
+
+ans:-
+[ridmi@DESKTOP-JLHF89K ~]$  vi fork.c
+[ridmi@DESKTOP-JLHF89K ~]$ gcc fork.c -o fork
+[ridmi@DESKTOP-JLHF89K ~]$ ./fork
+
+Hello World!
+
+I'm parent process
+
+I'm child process!
+
+//04
+#include<stdio.h>
+#include<unistd.h>
+#include<sys/wait.h>
+
+int main(){
+    int f = fork(); // create B
+
+    if (f == 0) {
+        // Only in B
+        printf("\nI'm B\n");
+        printf("My ppid: %d\n", getppid());
+        printf("My pid: %d\n", getpid());
+    } else {
+        // Only in A
+        int k = fork(); // create C
+        if (k == 0) {
+            // Only in C
+            printf("\nI'm c\n");
+            printf("My ppid: %d\n", getppid());
+            printf("My pid: %d\n", getpid());
+        } else {
+            // Still A
+            wait(NULL);
+            wait(NULL);
+            printf("\nI'm A\n");
+            printf("My pid: %d\n", getpid());
+        }
+    }
+
+    return 0;
+}
+
+
+ans:-
+[ridmi@DESKTOP-JLHF89K ~]$ vi prg2.c
+[ridmi@DESKTOP-JLHF89K ~]$ gcc prg2.c -o prg2
+[ridmi@DESKTOP-JLHF89K ~]$ ./prg2
+
+I'm B
+My ppid: 155
+My pid: 156
+
+I'm c
+My ppid: 155
+My pid: 157
+
+I'm A
+My pid: 155
