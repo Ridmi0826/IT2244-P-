@@ -99,3 +99,4 @@ Data sent: Hello from the sender program! 💬
 ```csharp
 Data received: Hello from the sender program! 💬
 ```
+![ipc](https://github.com/user-attachments/assets/f6156baa-080c-4b51-8b45-35834e6a726c)
